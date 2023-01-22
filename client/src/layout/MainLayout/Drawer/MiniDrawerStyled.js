@@ -3,8 +3,8 @@ import Drawer from '@mui/material/Drawer';
 import { styled } from '@mui/material/styles';
 
 // project import
+import { drawerWidth } from 'config';
 
-const drawerWidth = 260;
 const openedMixin = (theme) => ({
     width: drawerWidth,
     borderRight: `1px solid ${theme.palette.divider}`,
