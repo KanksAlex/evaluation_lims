@@ -3,7 +3,7 @@ import Sidebar from "./components/sidebar/Sidebar";
 import Topbar from "./components/topbar/Topbar";
 import "./App.css";
 import Home from "./pages/home/Home";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import UserList from "./pages/userList/UserList";
 import User from "./pages/user/User";
 import NewUser from "./pages/newUser/NewUser";
@@ -13,17 +13,12 @@ import NewProduct from "./pages/newProduct/NewProduct";
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Topbar />
       <div className="container">
         <Sidebar />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/users">
-            <UserList />
-          </Route>
+        <Route path="/" element={<Home />} />
+          <Route path="/users" element={<UserList/>} />
           <Route path="/user/:userId">
             <User />
           </Route>
@@ -39,9 +34,8 @@ function App() {
           <Route path="/newproduct">
             <NewProduct />
           </Route>
-        </Switch>
       </div>
-    </Router>
+      </BrowserRouter>
   );
 }
 
