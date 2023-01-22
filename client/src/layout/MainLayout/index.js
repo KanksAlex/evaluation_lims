@@ -1,13 +1,15 @@
 import { Box } from "@material-ui/core";
 import { Outlet } from "react-router-dom";
-import Sidebar from "../components/sidebar/Sidebar";
-import Topbar from "../components/topbar/Topbar";
+import Topbar from "../../components/topbar/Topbar";
+import Drawer from './Drawer';
+
+
 
 const Mainlayout =() => {
     return(
-        <Box>
+        <Box  sx={{display:'flex',width:'100%'}}>
             <Topbar/>
-            <Sidebar/>
+            <Drawer />
                 <Box component="main" sx={{width:'100%',flexGrow:1}} >
                     <h1>Home</h1>
                     <Outlet/>
