@@ -21,11 +21,11 @@ const Mainlayout = () => {
 
     // set media wise responsive drawer
     useEffect(() => {
-        setOpen(!matchDownLG);//sets thats Drawer should be open above lg screen size
-        dispatch(openDrawer({ drawerOpen: !matchDownLG }));
+        setOpen(true);//sets thats Drawer should be open above lg screen size
+        dispatch(openDrawer({ drawerOpen: true }));
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [matchDownLG]);
+    }, [false]);
 
     useEffect(() => {
         if (open !== drawerOpen) setOpen(drawerOpen);

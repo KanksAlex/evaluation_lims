@@ -6,6 +6,7 @@ import "./App.css";
 import ThemeRoutes from "./routes";
 
 import { Provider as ReduxProvider } from "react-redux";
+import { store } from "store";
 
 const App = () => {
   const [user, setUser] = useState(null);
