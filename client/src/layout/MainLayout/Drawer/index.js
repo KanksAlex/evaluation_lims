@@ -4,6 +4,8 @@ import { useMemo } from 'react';
 import DrawerContent from './DrawerContent';
 import MiniDrawerStyled from './MiniDrawerStyled';
 
+import { drawerWidth } from 'config';
+
 const MainDrawer =({ open, handleDrawerToggle, window }) => {
     const theme = useTheme();
     const matchDownMD = useMediaQuery(theme.breakpoints.down('lg'));
