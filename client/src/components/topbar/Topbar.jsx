@@ -2,7 +2,7 @@ import React from "react";
 import "./topbar.css";
 import { NotificationsNone, Language, Settings } from "@material-ui/icons";
 
-export default function Topbar() {
+const Topbar() {
   return (
     <div className="topbar">
       <div className="topbarWrapper">
@@ -33,3 +33,4 @@ export default function Topbar() {
     </div>
   );
 }
+export default Topbar;
