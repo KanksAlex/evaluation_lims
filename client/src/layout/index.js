@@ -5,7 +5,7 @@ import Topbar from "../components/topbar/Topbar";
 
 const Mainlayout =() => {
     return(
-        <Box sx={{display:'flex',width:'100%'}}>
+        <Box>
             <Topbar/>
             <Sidebar/>
                 <Box component="main" sx={{width:'100%',flexGrow:1}} >
