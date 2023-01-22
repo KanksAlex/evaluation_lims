@@ -1,5 +1,5 @@
 import React from 'react'
-import Mainlayout from '../layout';
+import Mainlayout from '../layout/MainLayout';
 
 const MainRoutes ={
     path:'/',
