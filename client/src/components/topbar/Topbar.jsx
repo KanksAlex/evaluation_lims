@@ -1,8 +1,12 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import "./topbar.css";
 import { NotificationsNone, Language, Settings } from "@material-ui/icons";
 
-const Topbar() {
+const Topbar=({ user }) => {
+  const logout = () => {
+    window.open("http://localhost:5000/auth/logout", "_self");
+  };
   return (
     <div className="topbar">
       <div className="topbarWrapper">
@@ -16,21 +20,28 @@ const Topbar() {
             Diagnostics Evaluations And Clinical Trial Unit</span>
         </div>
         <div className="topRight">
-{/*           <div className="topbarIconContainer">
-            <NotificationsNone />
-            <span className="topIconBadge">0</span>
-          </div> */}
-{/*           <div className="topbarIconContainer">
-            <Language />
-            <span className="topIconBadge">0</span>
-          </div> */}
-{/*           <div className="topbarIconContainer">
-            <Settings />
-          </div> */}
-          <img src="https://images.pexels.com/photos/1526814/pexels-photo-1526814.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" className="topAvatar" />
+        {user ? (
+        <ul className="list">
+          <li className="listItem">
+            <img
+              src={user.photos[0].value}
+              alt=""
+              className="avatar"
+            />
+          </li>
+          <li className="listItem">{user.displayName}</li>
+          <li className="listItem" onClick={logout}>
+            Logout
+          </li>
+        </ul>
+      ) : (
+        <Link className="link" to="login">
+          Login
+        </Link>
+      )}
         </div>
       </div>
     </div>
   );
-}
+};
 export default Topbar;
