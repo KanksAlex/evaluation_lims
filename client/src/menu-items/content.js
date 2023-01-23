@@ -25,10 +25,10 @@ const content = {
             level: 1,
         },
         {
-            id: 'staff',
-            title: 'Staff',
+            id: 'Participant',
+            title: 'Participant',
             type: 'item',
-            url: '/staff',
+            url: '/participant',
             icon: icons.PeopleOutlineRounded,
             breadcrumbs: false,
             level: 1,
@@ -44,16 +44,16 @@ const content = {
         // },
         {
             id: 'radio_collapse',
-            title: 'Radio',
+            title: 'Studies ',
             type: 'collapse',
-            url: '/radio',
+            url: '/studies',
             icon: icons.Radio,
             breadcrumbs: false,
             level: 1,
             children: [
                 {
-                    id: 'program_lineup',
-                    title: 'Program Lineup',
+                    id: 'CV001',
+                    title: 'CV001',
                     type: 'item',
                     url: '/radio/program_lineup',
                     icon: icons.FormatListBulletedRounded,
@@ -61,14 +61,23 @@ const content = {
                     level: 2
                 },
                 {
-                    id: 'radio_programs',
-                    title: 'Radio Programs',
+                    id: 'CV002',
+                    title: 'CV002',
                     type: 'item',
                     url: '/radio/programs',
                     icon: icons.FeaturedPlayListRounded,
                     breadcrumbs: false,
                     level: 2
-                }
+                },
+                {
+                    id: 'CV003',
+                    title: 'CV003',
+                    type: 'item',
+                    url: '/radio/programs',
+                    icon: icons.FeaturedPlayListRounded,
+                    breadcrumbs: false,
+                    level: 2
+                } 
             ]
         }
     ]
