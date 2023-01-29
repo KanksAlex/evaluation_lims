@@ -17,7 +17,7 @@ const content = {
     children: [
         {
             id: 'news',
-            title: 'News',
+            title: 'Information',
             type: 'item',
             url: '/news',
             icon: icons.Article,
@@ -44,7 +44,7 @@ const content = {
         // },
         {
             id: 'radio_collapse',
-            title: 'Studies ',
+            title: 'FIND ',
             type: 'collapse',
             url: '/studies',
             icon: icons.Radio,
@@ -79,7 +79,46 @@ const content = {
                     level: 2
                 } 
             ]
+        },
+        {
+            id: 'radio_collapse',
+            title: 'ASLM ',
+            type: 'collapse',
+            url: '/studies',
+            icon: icons.Radio,
+            breadcrumbs: false,
+            level: 1,
+            children: [
+                {
+                    id: 'CV003',
+                    title: 'CV003',
+                    type: 'item',
+                    url: '/radio/program_lineup',
+                    icon: icons.FormatListBulletedRounded,
+                    breadcrumbs: false,
+                    level: 2
+                },
+                {
+                    id: 'CV009',
+                    title: 'CV009',
+                    type: 'item',
+                    url: '/radio/programs',
+                    icon: icons.FeaturedPlayListRounded,
+                    breadcrumbs: false,
+                    level: 2
+                },
+                {
+                    id: 'CV010',
+                    title: 'CV010',
+                    type: 'item',
+                    url: '/radio/programs',
+                    icon: icons.FeaturedPlayListRounded,
+                    breadcrumbs: false,
+                    level: 2
+                } 
+            ]
         }
+
     ]
 };
 
