@@ -147,7 +147,7 @@ const Notification = () => {
                                                 primary={
                                                     <Typography variant="h6">
                                                         <Typography component="span" variant="subtitle1">
-                                                            Alex Kannakulya
+                                                            Alex Kanks
                                                         </Typography>{' '}
                                                         sent you a message.
                                                     </Typography>

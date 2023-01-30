@@ -8,6 +8,7 @@ import ThemeRoutes from "./routes";
 import { Provider as ReduxProvider } from "react-redux";
 import { store } from "store";
 import ThemeCustomization from "themes";
+import { AuthContextProvider } from "context/AuthContext";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -41,7 +42,9 @@ const App = () => {
     <ReduxProvider store={store}>
       <BrowserRouter>
         <ThemeCustomization>
-          <ThemeRoutes />
+          <AuthContextProvider>
+            <ThemeRoutes />
+          </AuthContextProvider>
         </ThemeCustomization>
       </BrowserRouter>
     </ReduxProvider>

@@ -5,10 +5,11 @@ import Home from 'pages/home/Home';
 import Info from 'pages/info';
 import ArticlePage from 'pages/info/Article';
 import UserList from 'pages/userList/UserList';
+import { ProtectedRoute } from './ProtectedRoute';
 
 const MainRoutes ={
     path:'/',
-    element:<MainLayout/>,
+    element:<ProtectedRoute><MainLayout/></ProtectedRoute>,
 
     children:[
         {

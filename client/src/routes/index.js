@@ -8,5 +8,5 @@ import PageNotFoundRoute from './PageNotFoundRoute';
 //Routing Render
 
 export default function ThemeRoutes(){
-    return useRoutes([LoginRoute,MainRoutes, PageNotFoundRoute]);
+    return useRoutes([LoginRoute, MainRoutes, PageNotFoundRoute]);
 };
