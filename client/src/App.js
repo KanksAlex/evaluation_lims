@@ -7,6 +7,7 @@ import ThemeRoutes from "./routes";
 
 import { Provider as ReduxProvider } from "react-redux";
 import { store } from "store";
+import ThemeCustomization from "themes";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -39,7 +40,9 @@ const App = () => {
   return (
     <ReduxProvider store={store}>
       <BrowserRouter>
-        <ThemeRoutes />
+        <ThemeCustomization>
+          <ThemeRoutes />
+        </ThemeCustomization>
       </BrowserRouter>
     </ReduxProvider>
   );

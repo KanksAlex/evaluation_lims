@@ -1,13 +1,19 @@
 import { Box } from "@material-ui/core";
 import { Outlet } from "react-router-dom";
-import Topbar from "../../components/topbar/Topbar";
 import Drawer from './Drawer';
+import TopBar from "./TopBar";
+
+
+import { useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { openDrawer } from "store/reducers/menu";
 
-const Mainlayout = () => {
+const MainLayout = () => {
+    const theme = useTheme();
+    const matchDownLG = useMediaQuery(theme.breakpoints.down('lg'));
     const dispatch = useDispatch();
 
     const { drawerOpen } = useSelector((state) => state.menu);
@@ -21,11 +27,11 @@ const Mainlayout = () => {
 
     // set media wise responsive drawer
     useEffect(() => {
-        setOpen(true);//sets thats Drawer should be open above lg screen size
-        dispatch(openDrawer({ drawerOpen: true }));
+        setOpen(!matchDownLG);//sets thats Drawer should be open above lg screen size
+        dispatch(openDrawer({ drawerOpen: !matchDownLG }));
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [false]);
+    }, [matchDownLG]);
 
     useEffect(() => {
         if (open !== drawerOpen) setOpen(drawerOpen);
@@ -34,10 +40,10 @@ const Mainlayout = () => {
 
     return (
         <Box sx={{ display: 'flex', width: '100%' }}>
-            <Topbar />
+            {/* <Topbar /> */}
+            <TopBar open={open} handleDrawerToggle={handleDrawerToggle} />
             <Drawer open={open} handleDrawerToggle={handleDrawerToggle} />
             <Box component="main" sx={{ width: '100%', flexGrow: 1, p: { xs: 2, sm: 3 } }}>
-                <h1>Home</h1>
                 <Outlet />
             </Box>
 
@@ -45,4 +51,4 @@ const Mainlayout = () => {
     );
 };
 
-export default Mainlayout;
+export default MainLayout;

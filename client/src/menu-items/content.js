@@ -1,14 +1,15 @@
 // assets
-import { AccountCircleRounded, Article, FeaturedPlayListRounded, FormatListBulletedRounded, PeopleOutlineRounded, Radio } from '@mui/icons-material';
+import { AccountCircleRounded, Article, FeaturedPlayListRounded, FolderOpen, FormatListBulletedRounded, PeopleOutlineRounded, Search } from '@mui/icons-material';
 
 // icons
 const icons = {
     Article,
-    Radio,
+    Search,
     FormatListBulletedRounded,
     FeaturedPlayListRounded,
     AccountCircleRounded,
-    PeopleOutlineRounded
+    PeopleOutlineRounded,
+    FolderOpen
 };
 const content = {
     id: 'group-content',
@@ -16,16 +17,16 @@ const content = {
     type: 'group',
     children: [
         {
-            id: 'news',
+            id: 'info',
             title: 'Information',
             type: 'item',
-            url: '/news',
+            url: '/info',
             icon: icons.Article,
             breadcrumbs: false,
             level: 1,
         },
         {
-            id: 'Participant',
+            id: 'participant',
             title: 'Participant',
             type: 'item',
             url: '/participant',
@@ -43,11 +44,11 @@ const content = {
         //     level: 1,
         // },
         {
-            id: 'radio_collapse',
+            id: 'find_collapse',
             title: 'FIND ',
             type: 'collapse',
             url: '/studies',
-            icon: icons.Radio,
+            icon: icons.Search,
             breadcrumbs: false,
             level: 1,
             children: [
@@ -55,7 +56,7 @@ const content = {
                     id: 'CV001',
                     title: 'CV001',
                     type: 'item',
-                    url: '/radio/program_lineup',
+                    url: '/studies/program_lineup',
                     icon: icons.FormatListBulletedRounded,
                     breadcrumbs: false,
                     level: 2
@@ -64,7 +65,7 @@ const content = {
                     id: 'CV002',
                     title: 'CV002',
                     type: 'item',
-                    url: '/radio/programs',
+                    url: '/studies/programs',
                     icon: icons.FeaturedPlayListRounded,
                     breadcrumbs: false,
                     level: 2
@@ -73,7 +74,7 @@ const content = {
                     id: 'CV003',
                     title: 'CV003',
                     type: 'item',
-                    url: '/radio/programs',
+                    url: '/studies/programs',
                     icon: icons.FeaturedPlayListRounded,
                     breadcrumbs: false,
                     level: 2
@@ -81,11 +82,11 @@ const content = {
             ]
         },
         {
-            id: 'radio_collapse',
+            id: 'aslm_collapse',
             title: 'ASLM ',
             type: 'collapse',
-            url: '/studies',
-            icon: icons.Radio,
+            url: '/aslm',
+            icon: icons.FolderOpen,
             breadcrumbs: false,
             level: 1,
             children: [
@@ -93,7 +94,7 @@ const content = {
                     id: 'CV003',
                     title: 'CV003',
                     type: 'item',
-                    url: '/radio/program_lineup',
+                    url: '/aslm/program_lineup',
                     icon: icons.FormatListBulletedRounded,
                     breadcrumbs: false,
                     level: 2
@@ -102,7 +103,7 @@ const content = {
                     id: 'CV009',
                     title: 'CV009',
                     type: 'item',
-                    url: '/radio/programs',
+                    url: '/aslm/programs',
                     icon: icons.FeaturedPlayListRounded,
                     breadcrumbs: false,
                     level: 2
@@ -111,7 +112,7 @@ const content = {
                     id: 'CV010',
                     title: 'CV010',
                     type: 'item',
-                    url: '/radio/programs',
+                    url: '/aslm/programs',
                     icon: icons.FeaturedPlayListRounded,
                     breadcrumbs: false,
                     level: 2
