@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const passport = require("passport");
+const LocalStrategy = require('passport-local');
+const crypto = require('crypto');
 
 const CLIENT_URL = "http://localhost:3000/";
 

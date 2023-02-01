@@ -1,4 +1,7 @@
-/* import Google from "../img/google.png";
+ 
+ import "./login.css";
+ 
+ /*import Google from "../img/google.png";
 import Github from "../img/github.png"; */
 
 const Login = () => {

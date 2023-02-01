@@ -29,7 +29,11 @@ const App = () => {
           throw new Error("authentication has been failed!");
         })
         .then((resObject) => {
+          console.log("hey man i got a user");
+          console.log(resObject.user);
+          console.log("=============");
           setUser(resObject.user);
+          localStorage.setItem("user", JSON.stringify(resObject.user));
         })
         .catch((err) => {
           console.log(err);
