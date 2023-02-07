@@ -26,10 +26,10 @@ const content = {
             level: 1,
         },
         {
-            id: 'participant',
-            title: 'Participant',
+            id: 'Matrix',
+            title: 'Matrix',
             type: 'item',
-            url: '/participant',
+            url: '/matrix',
             icon: icons.PeopleOutlineRounded,
             breadcrumbs: false,
             level: 1,
@@ -53,28 +53,28 @@ const content = {
             level: 1,
             children: [
                 {
-                    id: 'CV001',
-                    title: 'CV001',
+                    id: 'Cv003',
+                    title: 'Cv003',
                     type: 'item',
-                    url: '/studies/program_lineup',
+                    url: '/Cv003',
                     icon: icons.FormatListBulletedRounded,
                     breadcrumbs: false,
                     level: 2
                 },
                 {
-                    id: 'CV002',
-                    title: 'CV002',
+                    id: 'Cv009',
+                    title: 'Cv009',
                     type: 'item',
-                    url: '/studies/programs',
+                    url: '/Cv009',
                     icon: icons.FeaturedPlayListRounded,
                     breadcrumbs: false,
                     level: 2
                 },
                 {
-                    id: 'CV003',
-                    title: 'CV003',
+                    id: 'Cv010',
+                    title: 'Cv010',
                     type: 'item',
-                    url: '/studies/programs',
+                    url: '/Cv010',
                     icon: icons.FeaturedPlayListRounded,
                     breadcrumbs: false,
                     level: 2
