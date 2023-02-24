@@ -41,58 +41,109 @@ export default function DataGridProDemo() {
     setSex(event.target.value);
   };
 
+  const handleSubmit = async (values, { resetForm }) => {}
+
 
 
   return (
     <div style={{ height: 700, width: '100%' }}>
 
       <div className="featured">
+        
         <div className="featuredItem">
-<div style={{marginBottom:20,}}>
-          <TextField
-            label="PID"
-            id="outlined-start-adornment"
-            sx={{ m: 1, width: '25ch' }}
-            InputProps={{
-              startAdornment: <InputAdornment position="start">CV010</InputAdornment>,
-            }}
-          />
+          <form>
+          <div style={{marginBottom:20,}}>
+            <TextField
+              label="PID"
+              id="outlined-start-adornment"
+              sx={{ m: 1, width: '25ch' }}
+              InputProps={{
+                startAdornment: <InputAdornment position="start">CV010</InputAdornment>,
+              }}
+            />
 
-          <TextField
-            id="outlined-number outlined-start-adornment"
-            label=" PCR result (Ct value ORF 1a/b gene)2"
-            sx={{ m: 1, width: '25ch' }}
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
+            <TextField
+              id="outlined-number outlined-start-adornment"
+              label=" PCR result (Ct value ORF 1a/b gene)2"
+              sx={{ m: 1, width: '25ch' }}
+              type="number"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
 
-          <TextField
-            id="outlined-number outlined-start-adornment"
-            label="  PCR result (E-GENE)2"
-            sx={{ m: 1, width: '25ch' }}
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
+            <TextField
+              id="outlined-number outlined-start-adornment"
+              label="  PCR result (E-GENE)2"
+              sx={{ m: 1, width: '25ch' }}
+              type="number"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
 
-          <TextField
-            id="outlined-number outlined-start-adornment"
-            label=" PCR result (internal CTRL)"
-            sx={{ m: 1, width: '25ch' }}
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-  </div>
+            <TextField
+              id="outlined-number outlined-start-adornment"
+              label=" PCR result (internal CTRL)"
+              sx={{ m: 1, width: '25ch' }}
+              type="number"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </div>
+          <div style={{marginBottom:20,}} className="item2">
+            <Autocomplete
+              disablePortal
+              id="outlined-number outlined-start-adornment"
+              options={top100Films}
+              sx={{ m: 1, width: '25ch' }}
+              renderInput={(params) => <TextField {...params} label="facility" />}
+            />
+
+            <Autocomplete
+              disablePortal
+              id="outlined-number outlined-start-adornment"
+              options={results}
+              sx={{ m: 1, width: '25ch' }}
+              renderInput={(params) => <TextField {...params} label="PCR result (Pos/Neg)" />}
+            />
+        
+            <Autocomplete
+              disablePortal
+              id="outlined-number outlined-start-adornment"
+              options={results}
+              sx={{ m: 1, width: '25ch' }}
+              renderInput={(params) => <TextField {...params} label="POC result (Pos/Neg)" />}
+            />
+
+            <TextField
+              id="outlined-number outlined-start-adornment"
+              label="POC result (Ct Value)"
+              sx={{ m: 2, width: '25ch' }}
+              type="number"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </div>
+          <button
+            // onClick={() => {
+            //     console.log(values)
+            //     console.log(errors)
+            // }}
+            type="submit"
+            className="">
+          </button>
+          </form>
+          
+
+        </div>
           {/* 
           <Box sx={{ m: 1, width: '25ch' }}>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">Sex</InputLabel>
-              <Select
+              // <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={sex}
@@ -104,46 +155,7 @@ export default function DataGridProDemo() {
               </Select>
             </FormControl>
           </Box> */}
-
-
-          <Autocomplete
-            disablePortal
-            id="outlined-number outlined-start-adornment"
-            options={top100Films}
-            sx={{ m: 1, width: '25ch' }}
-            renderInput={(params) => <TextField {...params} label="facility" />}
-          />
-
-
-
-          <Autocomplete
-            disablePortal
-            id="outlined-number outlined-start-adornment"
-            options={results}
-            sx={{ m: 1, width: '25ch' }}
-            renderInput={(params) => <TextField {...params} label="PCR result (Pos/Neg)" />}
-          />
-
-          <Autocomplete
-            disablePortal
-            id="outlined-number outlined-start-adornment"
-            options={results}
-            sx={{ m: 1, width: '25ch' }}
-            renderInput={(params) => <TextField {...params} label="POC result (Pos/Neg)" />}
-          />
-
-          <TextField
-            id="outlined-number outlined-start-adornment"
-            label="POC result (Ct Value)"
-            sx={{ m: 1, width: '25ch' }}
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-
-
-        </div>
+        
       </div>
       <DataGridPro
         {...data}
