@@ -10,7 +10,7 @@ const mysql = require("mysql")
 const db = mysql.createConnection({
   host : 'localhost',
   user : 'root',
-  password : 'root',
+  password : '123456',
   database: 'evaluation'
   
 });
@@ -26,13 +26,27 @@ db.connect(() => {
 const app = express();
 
 app.get('/createdb', (req,res) =>{
-  let sql = 'CREATE DATABASEevaluation';
+  let sql = 'CREATE DATABASE evaluation';
   db.query(sql, (error, result) => {
     if(error) {console.log(error);}
     console.log(result)
     res.send('Database created...');
   })
 });
+
+app.get("/list",(req,res) =>{
+  res.send("list of items");
+});
+
+app.post("/additem",(req,res) =>{
+  console.log(req.body)
+  res.send("Add item");
+});
+
+app.get("/deleteitem",(req,res) =>{
+  res.send("Delete item");
+});
+
 
 app.use(
   cookieSession({ name: "session", keys: ["lama"], maxAge: 24 * 60 * 60 * 100 })
