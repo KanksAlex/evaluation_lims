@@ -1,0 +1,15 @@
+post http://localhost:5000/CV010
+Content-Type: application/json
+
+
+{
+    "pid": "CV010GP070002",
+     "date": "2023/1/31", 
+     "facility": "Butabika", 
+     "ct_value_ORF": 22.58, 
+     "e_GENE": 21.57, 
+     "internal_CTRL": 35.6, 
+     "pcr_result": "Pos", 
+     "poc_resut": "Pos", 
+     "poc_value": 19.5
+}

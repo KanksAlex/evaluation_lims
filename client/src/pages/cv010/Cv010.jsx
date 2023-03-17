@@ -10,95 +10,34 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { DataGrid } from '@mui/x-data-grid';
 import InputAdornment from '@mui/material/InputAdornment';
-
-
-
-
-
 export default function DataGridProDemo() {
 
 const initalValues = {
   pid : '',
-  pcr_ct : 0,
-  pcr_e : 0,
-  pcr_internal : 0,
+  ct_value_ORF : 0,
+  e_GENE : 0,
+  internal_CTRL : 0,
   facility : '',
-  pcr_pos_neg : '',
-  por_pos_neg : '',
-  por_ct : 0,
+  pcr_result : '',
+  poc_resut : '',
+  poc_value : 0,
 }
-const columns = [
-  { field: 'id', headerName: 'ID', width: 90 },
-  {eaderName: 'First name',
-    width: 150,
-    editable: true,
-  },
-  {
-    field: 'lastName',
-    headerName: 'Last name',
-    width: 150,
-    editable: true,
-  },
-  {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
-    width: 110,
-    editable: true,
-  },
-  {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (params) =>
-      `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-  },
-];
 
-const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-];
+const columns =[
+  {headerName: 'Date', field: 'date'},
+  {headerName: 'Facility of sample collection', field: 'facility'},
+  {headerName: 'Participant ID', field: 'pid'},
+  {headerName: 'PCR result(Ct value ORF 1a/b gene)2', field: 'ct_value_ORF'},
+  {headerName: 'PCR result(E-GENE)2', field: 'e_GENE'},
+  {headerName: 'PCR result(internal CTRL)', field: 'internal_CTRL'},
+  {headerName: 'PCR result(Pos/Neg)', field: 'pcr_result'},
+  {headerName: 'POR result(Pos/Neg)', field: 'poc_resut'},
+  {headerName: 'POC result (Ct Value)', field: 'poc_value'},
 
-// datagrid ends here
-
-  const top100Films = [
-    { label: 'The Shawshank Redemption' },
-    { label: 'The Godfather' },
-    { label: 'The Godfather: Part II'},
-    { label: 'The Dark Knight' },
-    { label: '12 Angry Men' },
-    { label: "Schindler's List"},
-    { label: 'Pulp Fiction'},
-
-  ];
-  // const top100Films = [
-  //   { label: 'The Shawshank Redemption', year: 1994 },
-  //   { label: 'The Godfather', year: 1972 },
-  //   { label: 'The Godfather: Part II', year: 1974 },
-  //   { label: 'The Dark Knight', year: 2008 },
-  //   { label: '12 Angry Men', year: 1957 },
-  //   { label: "Schindler's List", year: 1993 },
-  //   { label: 'Pulp Fiction', year: 1994 },
-
-  // ];
-
-  const results = [
-    { label: 'Positive' },
-    { label: 'Negative' }
-  ];
-
+]
 
   const [values, setValues] = React.useState(initalValues);
+  const [data, setData] = React.useState([])
   // const [errors, setErrors] = React.useState({});
   // const validate = () => {
   //   let temp = {}
@@ -114,6 +53,23 @@ const rows = [
   //     ...temp
   //   })
   // }
+  const fetchData = async ()=>{
+    try{
+      const res = await axios.get("http://localhost:5000/CV010");
+      const {data} =  res
+      setData(data);
+      console.log("Fetched Data: ",data)
+      
+    }catch(err){
+      console.log(err)
+    }
+  }
+
+  React.useEffect (()=>{
+    
+    fetchData();
+  },[]);
+
   const handleChange = (e) => {
     const {name, value } = e.target
     setValues({
@@ -122,16 +78,19 @@ const rows = [
     })
   };
 
-  const handleSubmit = () => {
-    // window.alert("testing")
-    axios.post("http://localhost:5000/additem",{
-      item: values
-    })
+  const handleSubmit = async (error) => {
+   error.preventDefault();
+  console.log("Values:", values);
+   try{
+      await axios.post("http://localhost:5000/CV010", values);
+    await fetchData();
+
+   }catch(err){
+      console.log(err); 
+   }
+   
 
   }
-  // const handleSubmit = async (values, { resetForm }) => {
-
-  // }
 
 
 
@@ -143,6 +102,7 @@ const rows = [
         <div className="featuredItem" >
           <form onSubmit={handleSubmit}>
           <div style={{marginBottom:20,}}>
+            
             <TextField
               // error
               label="PID"
@@ -167,8 +127,8 @@ const rows = [
                 shrink: true,
               }}
               // helperText="Enter Number"
-              name="pcr_ct"
-              value={values.pcr_ct}
+              name="ct_value_ORF"
+              value={values.ct_value_ORF}
               onChange={handleChange}
             />
 
@@ -182,8 +142,8 @@ const rows = [
                 shrink: true,
               }}
               // helperText="Enter Number"
-              name="pcr_e"
-              value={values.pcr_e}
+              name="e_GENE"
+              value={values.e_GENE}
               onChange={handleChange}
             />
 
@@ -197,8 +157,8 @@ const rows = [
                 shrink: true,
               }}
               // helperText="Enter number"
-              name="pcr_internal"
-              value={values.pcr_internal}
+              name="internal_CTRL"
+              value={values.internal_CTRL}
               onChange={handleChange}
             />
           </div>
@@ -215,9 +175,10 @@ const rows = [
                   label="Facility"
                   onChange={handleChange}
                 >
-                  <MenuItem value={"health"}>Health</MenuItem>
-                  <MenuItem value={"IT"}>IT</MenuItem>
-                  <MenuItem value={"Equipment"}>Equipment</MenuItem>
+                  <MenuItem value={"Butabika"}>Butabika</MenuItem>
+                  <MenuItem value={"Mulago"}>Mulago</MenuItem>
+                  <MenuItem value={"Kiruddu"}>Kiruddu</MenuItem>
+                  <MenuItem value={"Kawempe"}>Kawempe</MenuItem>
                 </Select>
               </FormControl>
           </Box>
@@ -228,13 +189,14 @@ const rows = [
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  name="pcr_pos_neg"
-                  value={values.pcr_pos_neg}
+                  name="pcr_result"
+                  value={values.pcr_result}
                   label="PCR result (Pos/Neg)" 
                   onChange={handleChange}
                 >
                   <MenuItem value={"positive"}>Positive</MenuItem>
                   <MenuItem value={"negative"}>Negative</MenuItem>
+                  <MenuItem value={"presumptive"}>Presumptive pos</MenuItem>
                 </Select>
               </FormControl>
           </Box>
@@ -244,13 +206,16 @@ const rows = [
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  name="por_pos_neg"
-                  value={values.por_pos_neg}
+                  name="poc_resut"
+                  value={values.poc_resut}
                   label="POC result (Pos/Neg)" 
                   onChange={handleChange}
                 >
+                  <MenuItem value={"n/a"}>N/A</MenuItem>
                   <MenuItem value={"positive"}>Positive</MenuItem>
                   <MenuItem value={"negative"}>Negative</MenuItem>
+                  <MenuItem value={"failed"}>Failed</MenuItem>
+                  <MenuItem value={"inhibition"}>PCR inhibition</MenuItem>
                 </Select>
               </FormControl>
           </Box>
@@ -269,15 +234,17 @@ const rows = [
                 shrink: true,
               }}
               // helperText="Enter Number"
-              name="por_ct"
-              value={values.por_ct}
+              name="poc_value"
+              value={values.poc_value}
               onChange={handleChange}
             />
           </div>
-          <Button variant="contained" 
-            onClick={() => {  
-              console.log(values)
-            }}
+          <Button     
+            variant="contained" 
+            type="submit"
+            // onClick={() => {  
+            //   console.log(values)
+            // }}
           >Submit</Button>   
           </form> 
         </div>
@@ -285,15 +252,17 @@ const rows = [
         
       </div>
       <Box sx={{ height: 400, width: '100%' }}>
+        
       <DataGrid
-        key={rows.id}
-        rows={rows}
+        key={data.pid}
+        rows={data}
+        getRowId={(data) => ({id:data.pid})}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection
         // disableSelectionOnClick
-        experimentalFeatures={{ newEditingApi: true }}
+        // experimentalFeatures={{ newEditingApi: true }}
       />
     </Box>
     </div>
